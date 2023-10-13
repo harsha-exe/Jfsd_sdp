@@ -2,8 +2,10 @@ package com.jfsd.sdp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.jfsd.sdp")
 public class FoodDeliverySystemApplication {
 
 	public static void main(String[] args) {
