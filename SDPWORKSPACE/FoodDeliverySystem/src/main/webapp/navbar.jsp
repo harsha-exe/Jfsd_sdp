@@ -1,3 +1,4 @@
+<%@page import="com.jfsd.sdp.model.Client"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -12,6 +13,11 @@
 </head>
 <body>
     <script src="https://kit.fontawesome.com/e1b6c77699.js" crossorigin="anonymous"></script>
+    <%Object obj=session.getAttribute("clientId");
+    int cid=0;
+    if(obj!=null)
+    	cid=(int)obj;
+    %>
     <div class="navbar-wrapper">
         <div class="navbar-left">
             <div class="name">Food <span>Express</span></div>
@@ -20,8 +26,8 @@
             <div class="navbar-list">
                 <ul style="list-style: none;">
                     <li><a href="./home">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="/vieworders/<%= cid %>">View Orders</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
                 </ul>
                 
             </div>

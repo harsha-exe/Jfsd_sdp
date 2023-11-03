@@ -1,6 +1,7 @@
 package com.jfsd.sdp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,12 @@ public class ItemServiceImpl implements ItemsService {
 
 	@Override
 	public Items viewItemById(int id) {
-		// TODO Auto-generated method stub
+		Optional<Items> obj=itemsRepository.findById(id);
+		if(obj.isPresent())
+		{
+			Items i=obj.get();
+			return i;
+		}
 		return null;
 	}
 

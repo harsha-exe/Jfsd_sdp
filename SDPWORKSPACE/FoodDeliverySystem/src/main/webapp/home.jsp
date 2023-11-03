@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./styles/navbar.css">
     <link rel="stylesheet" href="./styles/footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/myorders.css"> 
     <title>Document</title>
 </head>
 <body>
     <script src="https://kit.fontawesome.com/e1b6c77699.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/e1b6c77699.js" crossorigin="anonymous"></script>
 	<%@include file="navbar.jsp" %>
-	<!-- <c:if test="${not empty ack}"></c:if> -->
-	<script >
-		alert("${ack}");
-	</script>
 	<%
 		String arr[]={"./images/burger.jpg","./images/italiandelight.jpg","./images/noodles.jpg","./images/choco-shake.jpg"};
 	%>
@@ -24,7 +24,7 @@
         <div class="top-section">
             <div class="image-cont" style="border: 1px; text-align: center; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
                 <!-- <img src="./images/top-view-delicious-noodles-concept.jpg" alt=""> -->
-                <input type="search" placeholder="enter an item to search" style="width:45%;height:100%">
+               <!--   <input type="search" placeholder="enter an item to search" style="width:45%;height:100%"> -->
             </div>
         </div>
         <div class="bottom-section">
@@ -36,11 +36,11 @@
                 <div class="my-card">
                     <div class="card-img">
                     
-                        <img src="<%= arr[idx++] %>" alt="" style="width: 100%;">
+                        <img src="<%= arr[idx] %>" alt="" style="width: 100%;">
                     </div>
-                    <div class="card-info">
-                        <h3>"${item.name}"</h3>
-                        <div class="star-rating" style="margin-top:1rem;margin-bottom: 1rem;">
+                    <div class="card-info p-1">
+                        <h3>${item.name}</h3>
+<!--                          <div class="star-rating" style="margin-top:1rem;margin-bottom: 1rem;">
                             <input type="radio" id="5-stars-card1" checked="checked" name="rating" value="5" />
                             <label for="5-stars-card1" class="star">&#9733;</label>
                             <input type="radio" id="4-stars-card1" name="rating" value="4" />
@@ -51,12 +51,32 @@
                             <label for="2-stars-card1" class="star">&#9733;</label>
                             <input type="radio" id="1-star-card1" name="rating" value="1" />
                             <label for="1-star-card1" class="star">&#9733;</label>
-                        </div>
-                        <button>Order Now</button>
+                        </div> -->
+                        <h6><span style="color: red;">${item.rating}</span>/5</h6>
+                        <button  onclick="placeOrder(<%= idx+1%>)">Order Now</button>
+                		<%idx++; %>
                     </div>
                 </div>
                 </c:if>
                 </c:forEach>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+				<script>
+				    function placeOrder(id) {
+				        $.ajax({
+				            type: "POST",
+				            url: "/placeorder/" + id,
+				            success: function(data) {
+				                alert("Order placed successfully!");
+				                // Optionally, you can update the page with the response data
+				            },
+				            error: function() {
+				                alert("Error placing the order.");
+				            }
+				        });
+				    }
+				</script>
+				
  <!--             <div class="my-card">
                     <div class="card-img">
                         <img src="./images/noodles.jpg" alt="" style="width: 100%;">

@@ -5,18 +5,26 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jfsd.sdp.model.Client;
+import com.jfsd.sdp.model.ClientOrderMapping;
 import com.jfsd.sdp.model.Items;
+//import com.jfsd.sdp.model.Order;
+import com.jfsd.sdp.model.Restaurants;
 import com.jfsd.sdp.service.ClientService;
 import com.jfsd.sdp.service.ItemsService;
+import com.jfsd.sdp.service.OrderService;
+//import com.jfsd.sdp.service.OrderService;
+import com.jfsd.sdp.service.RestaurantsService;
 
+import jakarta.persistence.EntityManager;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -28,6 +36,12 @@ public class ClientController {
 	
 	@Autowired
 	private ItemsService itemsService;
+	
+	@Autowired
+	private OrderService orderService;
+	
+	@Autowired
+	private RestaurantsService restaurantsService;
 	
 	@GetMapping("/")
 	public ModelAndView demo()
@@ -98,13 +112,19 @@ public class ClientController {
 		String pswd=request.getParameter("pwd");
 		Client c= clientService.checkClientLogin(email, pswd);
 		ModelAndView mv=new ModelAndView();
+		if(email.equals("klu@gmail.com") && pswd.equals("klu"))
+		{
+			mv.setViewName("redirect:/adminhome");
+			return mv;
+		}
 		if(c!=null)
 		{
 			mv.setViewName("redirect:/home");
 			//mv.addObject("ack","Login Success !");
-			redirectAttributes.addFlashAttribute("ack", "Login Success !");
+			//redirectAttributes.addFlashAttribute("ack", "Login Success !");
 			HttpSession session =request.getSession();
-			session.setAttribute("client",c);
+			session.setAttribute("clientId",c.getId());
+			session.setAttribute("ack", "Login Success !!");
 			return mv;
 		}
 		mv.setViewName("redirect:/login");
@@ -113,18 +133,160 @@ public class ClientController {
 		return mv;
 	}
 	@GetMapping("/home")// change later
-	public ModelAndView clientHome()
+	public ModelAndView clientHome(HttpServletRequest request)
 	{
-		
-		ModelAndView mv=new ModelAndView("home");
-		List<Items> items=itemsService.viewAllItems();
-		mv.addObject("items", items);
+		HttpSession session =request.getSession();
+		ModelAndView mv=new ModelAndView();
+		if(session.getAttribute("clientId")!=null)
+		{
+			//ModelAndView mv=new ModelAndView();
+			mv.setViewName("home");
+			List<Items> items=itemsService.viewAllItems();
+			mv.addObject("items", items);
+			return mv;
+		}
+		mv.setViewName("redirect:/login");
 		return mv;
+		
 	}
 	@GetMapping("/userprofile")
 	public ModelAndView clientProfile()
 	{
 		ModelAndView mv=new ModelAndView("Profile");
 		return mv;
+	}
+	
+//	@GetMapping("/placeorder/{id}")
+//	public ModelAndView addOrder(@PathVariable("id") int id,HttpServletRequest request)
+//	{
+//		ModelAndView mv=new ModelAndView();
+//		System.out.println(id);
+//		Items i=itemsService.viewItemById(id);
+//		//System.out.println(i);
+//		Order o=new Order();
+//		HttpSession session =request.getSession();
+//		Client c=(Client)session.getAttribute("client");
+//		int clientId=c.getId();
+//		o.setItemid(id);
+//		o.setCid(clientId);
+//		o.setItemname(i.getName());
+//		o.setStatus(true);
+//		o.setPrice(i.getPrice());
+//		orderService.addOrder(o);
+//		mv.setViewName("redirect:/home");
+//		return mv;
+//	}
+	
+	@GetMapping("/vieworders/{id}")
+	public ModelAndView viewOrders(@PathVariable("id") int id)
+	{
+		List<ClientOrderMapping> lst=orderService.getClientOrdersById(id);
+		ModelAndView mv=new ModelAndView("vieworders");
+		mv.addObject("ordlist", lst);
+		return mv;
+	}
+	
+	@PostMapping("/placeorder/{id}")
+	@ResponseBody
+	public String placeOrder(@PathVariable("id") int id,HttpServletRequest request)
+	{
+		HttpSession session=request.getSession();
+		
+		int cid=(int)session.getAttribute("clientId");
+		System.out.println("client Id"+cid);
+		Items i=itemsService.viewItemById(id);
+		//System.out.println("Item "+i);
+		long n=orderService.checkOrderMapping(i, clientService.viewClientById(cid));
+		if(n>0) {
+			System.out.println("Already Ordered !!!");
+		}
+		else {
+			ClientOrderMapping obj=new ClientOrderMapping();
+			obj.setClient(clientService.viewClientById(cid));
+			System.out.println("client "+clientService.viewClientById(cid));
+			obj.setItem(i);
+			obj.setPrice(i.getPrice());
+			obj.setQuantity(1);
+			obj.setName(i.getName());
+			obj.setRestaurantName("");
+			orderService.placeClientsOrder(obj);
+		}
+		return "added";
+	}
+	
+	@PostMapping("/updatedetails")
+	public ModelAndView updateProfile(HttpServletRequest request)
+	{
+		String fname=request.getParameter("fname");
+		String lname=request.getParameter("lname");
+		String email=request.getParameter("email");
+		String pswd=request.getParameter("pswd");
+		String mobile=request.getParameter("mobile");
+		String loc=request.getParameter("location");
+		Client c=new Client();
+		HttpSession session=request.getSession();
+		Client sessionClient=(Client)session.getAttribute("client");
+		c.setId(sessionClient.getId());
+		c.setFname(fname);
+		c.setLname(lname);
+		c.setEmail(email);
+		c.setPassword(pswd);
+		c.setLocation(loc);
+		c.setMobile(mobile);
+		System.out.println(c);
+		clientService.updateClient(c);
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("redirect:/login");
+		return mv;
+	}
+//	@GetMapping("/adminhome")
+//	public ModelAndView adminHome()
+//	{
+//		ModelAndView mv=new ModelAndView("admin");
+//		long restCount=restaurantsService.count();
+//		long ordCount=orderService.count();
+//		mv.addObject("restcount",restCount);
+//		mv.addObject("ordcount",ordCount);
+//		return mv;
+//	}
+	
+	@GetMapping("/restaurants")
+	public ModelAndView restaurants()
+	{
+		List<Restaurants> rlist=restaurantsService.viewAllRestaurants();
+		ModelAndView mv=new ModelAndView("restaurants");
+		mv.addObject("rlist", rlist);
+		return mv;
+	}
+	@PostMapping("/addrestaurant")
+	public ModelAndView addRestaurant(HttpServletRequest request)
+	{
+		String name=request.getParameter("name");
+		String location =request.getParameter("location");
+		String contact=request.getParameter("contact");
+		String gst=request.getParameter("gst");
+		Restaurants r=new Restaurants();
+		r.setName(name);
+		r.setGst(gst);
+		r.setLocation(location);
+		r.setContact(contact);
+		restaurantsService.addRestaurant(r);
+		ModelAndView mv=new ModelAndView("redirect:/restaurants");
+		return mv;
+	}
+	
+	@DeleteMapping("/remove/{oid}")
+	@ResponseBody
+	public String removeOrder(@PathVariable("oid") int id)
+	{
+		orderService.deleteOrder(id);
+		ModelAndView mv=new ModelAndView();
+		return "Removed !!!";
+		
+	}
+	@GetMapping("/aboutus")
+	public String aboutUs()
+	{
+		return "aboutus";
 	}
 }

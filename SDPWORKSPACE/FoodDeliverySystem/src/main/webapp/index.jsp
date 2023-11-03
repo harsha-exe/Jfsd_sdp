@@ -50,28 +50,27 @@
           tender dumplings that promise an explosion of taste,
            Chinese food beckons with an irresistible fusion of tradition and innovation.</p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+          <!--    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
             <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
-          </div>
+          </div> -->
         </div>
       </div>
-      <div class="row flex-lg-row-reverse align-items-center g-5 py-5" data-aos="fade-right" data-aos-duration="1500">
- 
-        <div class="col-lg-6">
-          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Continental Culinary Journey</h1>
-          <p class="lead">Immerse yourself in the world of Continental cuisine, where each plate is a masterpiece of European flavors and culinary finesse. From delectable pastas and savory
-           sauces to succulent meats and exquisite desserts, 
-           Continental food invites you to savor the elegance and sophistication of a timeless culinary tradition.</p>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5" data-aos="fade-left" data-aos-duration="1500">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="./images/italian.png" class="d-block mx-lg-auto img-fluid"
+              alt="Bootstrap Themes" width="700" height="500" loading="lazy" style="border-radius: 15px">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Italian Epicurean Symphony</h1>
+            <p class="lead">Embark on a tantalizing journey into the heart of Italy with its world-renowned cuisine. Italian food is a celebration of simplicity and vibrant flavors,
+             where fresh ingredients and time-honored recipes come together to create culinary perfection.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <!--   <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+              <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+              --> 
+            </div>
           </div>
         </div>
-              <div class="col-10 col-sm-8 col-lg-6">
-                <img src="./images/continental.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
-                  width="700" height="500" loading="lazy" style="border-radius: 15px">
-              </div>
-      </div>
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5" data-aos="fade-left" data-aos-duration="1500">
           <div class="col-10 col-sm-8 col-lg-6">
             <img src="./images/italian.png" class="d-block mx-lg-auto img-fluid"
@@ -82,16 +81,18 @@
             <p class="lead">Embark on a tantalizing journey into the heart of Italy with its world-renowned cuisine. Italian food is a celebration of simplicity and vibrant flavors,
              where fresh ingredients and time-honored recipes come together to create culinary perfection.</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+            <!--   <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
               <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+              --> 
             </div>
           </div>
         </div>
     </div>
 
-    <%@include file="footer.jsp" %>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
+<%@include file="footer.jsp" %>
 </html>
     

@@ -1,6 +1,7 @@
 package com.jfsd.sdp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,7 @@ public class ClientServiceImpl implements ClientService {
 	
 	@Override
 	public Client viewClientById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return clientRepository.findById(id).get();
 	}
 
 	@Override
@@ -34,8 +34,22 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public String updateClient(Client c) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Client> obj = clientRepository.findById(c.getId()); 
+		
+	    if(obj.isPresent())
+	    {
+	        Client updateObj = obj.get();
+	        System.out.println(updateObj.getMobile());
+	      	updateObj.setFname(c.getFname());
+			updateObj.setLname(c.getLname());
+			updateObj.setEmail(c.getEmail());
+			updateObj.setPassword(c.getPassword());
+			updateObj.setMobile(c.getMobile());
+			updateObj.setLocation(c.getLocation());
+			clientRepository.save(updateObj);
+			return "Success !";
+	    }
+	    return "Failed !";
 	}
 
 	@Override

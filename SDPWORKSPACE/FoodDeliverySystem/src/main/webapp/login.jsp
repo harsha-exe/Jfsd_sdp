@@ -1,3 +1,4 @@
+<%@page import="org.springframework.web.servlet.mvc.support.RedirectAttributes"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
     <html lang="en">
@@ -26,7 +27,8 @@
             	<script >
             		alert("${ack}");
             	</script>
-            </c:if>
+            </c:if>         
+            
             <div class="split-screen">
                 <div class="left ">
                 </div>
