@@ -37,17 +37,6 @@
                 </div>
             </div>
         </div>
-        <div class="rightFooter">
-            <div class="rightF1">
-                <label>Stay On Latest Updates</label>
-            </div>
-            <div class="rightF2">
-                <input type="email" placeholder="Enter Your Email Address" />
-            </div>
-            <div class="rightF3">
-                <input type="submit" value="signup" />
-            </div>
-        </div>
     </div>
 </body>
 

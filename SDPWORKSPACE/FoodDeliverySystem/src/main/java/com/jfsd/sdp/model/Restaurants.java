@@ -16,11 +16,11 @@ public class Restaurants {
 	@Column(nullable = false)
 	private String name;
 	
-	@Column(nullable = false,length = 10)
-	private String contact;
+	@Column(nullable = false)
+	private String email;
 	
 	@Column(nullable = false)
-	private String gst;
+	private String password;
 	
 	@Column(nullable = false)
 	private String location;
@@ -41,21 +41,8 @@ public class Restaurants {
 		this.name = name;
 	}
 
-	public String getContact() {
-		return contact;
-	}
-
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
-
-	public String getGst() {
-		return gst;
-	}
-
-	public void setGst(String gst) {
-		this.gst = gst;
-	}
+	
+	
 
 	public String getLocation() {
 		return location;
@@ -63,6 +50,28 @@ public class Restaurants {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Restaurants [id=" + id + ", name=" + name + ", contact=" + ", email=" + email + ", password="
+				+ password + ", location=" + location + "]";
 	}
 	
 }

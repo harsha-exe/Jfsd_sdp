@@ -11,4 +11,6 @@ public interface RestaurantsService {
 	public List<Restaurants> viewAllRestaurants();
 	
 	public long count();
+	
+	public Restaurants restaurantLogin(String email,String password);
 }

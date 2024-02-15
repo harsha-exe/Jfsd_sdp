@@ -21,19 +21,18 @@
             crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-            crossorigin="anonymous"></script>
-            
-            <c:if test="${not empty ack}">
+            crossorigin="anonymous"></script>   
+            <c:if test="${not empty failure}">
             	<script >
-            		alert("${ack}");
+            		alert("${failure}");
             	</script>
-            </c:if>         
+            </c:if>        
             
             <div class="split-screen">
                 <div class="left ">
                 </div>
                 <div class="right">
-                    <form  action="/checkclientlogin" method="post">
+                    <form  action="${pageContext.request.contextPath}/checkclientlogin" method="post">
                         <section class="copy">
                             <h1>Sign In</h1>
                             <i class="fa-solid fa-lock fa-beat fa-xl my-icon"
@@ -49,7 +48,7 @@
                         </div>
                        <button type="submit" value="sign in" class="btn" id="signinbtn">SIGN IN</button>
                         <br />
-                        <span style="font-size :17px;">Dont have an account ? <a href="/regprompt" style="color: #FFD200;">Sign up</a> now
+                        <span style="font-size :17px;">Dont have an account ? <a href="${pageContext.request.contextPath}/regprompt" style="color: #FFD200;">Sign up</a> now
                         </span>
                     </form>
                 </div>

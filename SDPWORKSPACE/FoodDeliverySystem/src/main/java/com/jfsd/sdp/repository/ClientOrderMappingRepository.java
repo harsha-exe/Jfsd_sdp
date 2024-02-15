@@ -17,6 +17,9 @@ public interface ClientOrderMappingRepository extends CrudRepository<ClientOrder
 	@Query("SELECT COUNT(obj) FROM ClientOrderMapping obj where obj.item = ?1 and obj.client = ?2")
 	  public long checkForOrderMapping(Items item,Client client);
 	
+	@Query("SELECT SUM(price) FROM ClientOrderMapping")
+	  public long totalSale();
+	
 	
 //	@Query("delete from ClientOrderMapping where obj.item.id=?1")
 //	public int cancleOrder(int id);

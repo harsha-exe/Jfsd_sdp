@@ -16,21 +16,21 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="/" class="brand">
+		<a href="${pageContext.request.contextPath}/adminhome" class="brand">
 			
 			<span class="text">AdminPannel</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="/adminhome">
+				<a href="${pageContext.request.contextPath}/adminhome">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="/restaurants">
+				<a href="${pageContext.request.contextPath}/restaurants">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Resturent</span>
+					<span class="text">Restaurants</span>
 				</a>
 			</li>
 			<li>
@@ -40,7 +40,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="${pageContext.request.contextPath}/customers">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Customer</span>
 				</a>
@@ -100,9 +100,9 @@
 					</span>
 				</li>
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
+					<i class='bx bx-rupee'></i>
 					<span class="text">
-						<h3>$2543</h3>
+						<h3>${sale}</h3>
 						<p>Total Sales</p>
 					</span>
 				</li>

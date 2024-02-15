@@ -19,7 +19,7 @@
     
     function removeOrder(id, price) {
     	console.log(id+" "+price)
-    	const myUrl="/remove/"+id;
+    	const myUrl="${pageContext.request.contextPath}/remove/"+id;
     	console.log(myUrl)
         $.ajax({
             type: "DELETE",
@@ -70,7 +70,7 @@
 	 <div id="grandTotal" style="display:flex;flex-direction:column;text-align: center; margin-top: 20px;" class="p-2 m-3">
        <h5> Grand Total: <span id="totalValue">0</span></h5>
         <div class="mt-1">
-        	<button class="btn btn-success" id="paymentbtn">Pay Now</button>
+        <a href="${pageContext.request.contextPath}/checkout-session"><button class="btn btn-success" id="paymentbtn">Pay Now</button></a>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

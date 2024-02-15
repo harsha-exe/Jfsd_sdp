@@ -12,7 +12,7 @@
      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <div>
-<%@include file="navbar.jsp" %>s
+<%@include file="navbar.jsp" %>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script> AOS.init();</script>
     <main>    
@@ -34,7 +34,7 @@
                     </svg>
                     <h2 class="fw-normal">Aditya</h2>
                     <p>I'm a 3rd year CS student interested in FULL STACK WEB DEVLOPMENT Using MERN Stack and Cloud Computing</p>
-                    <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                    <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/chalavadi-kvss-pavan-aditya-9b9722245/" target="blank">View details »</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4" data-aos="fade-top" data-aos-duration="1500">
                     <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
@@ -46,7 +46,7 @@
                     </svg>
                     <h2 class="fw-normal">Harsha</h2>
                     <p>I'm a 3rd year CS student interested in FULL STACK WEB DEVLOPMENT , CLOUD COMPUTING AND MACHINE LEARNING</p>
-                    <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                    <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/sai-harsha-pingali-64274a226/" target="blank">View details »</a></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4" data-aos="fade-bottom" data-aos-duration="1500">
                     <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
@@ -58,7 +58,7 @@
                     </svg>
                     <h2 class="fw-normal">Chaitanya</h2>
                     <p>I'm a 3rd year CS student interested in FULL STACK WEB DEVLOPMENT & UX Design</p>
-                    <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                    <p><a class="btn btn-secondary" href="https://www.linkedin.com/in/chaitanya-kishore-6aa93a246/" target="blank">View details »</a></p>
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
     
@@ -103,7 +103,7 @@
     
         <!-- FOOTER -->
     </main>
-
+<%@include file="footer.jsp" %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>

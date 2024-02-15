@@ -25,13 +25,12 @@
         <div class="navbar-right">
             <div class="navbar-list">
                 <ul style="list-style: none;">
-                    <li><a href="./home">Home</a></li>
-                    <li><a href="/vieworders/<%= cid %>">View Orders</a></li>
-                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/vieworders/<%= cid %>">View Orders</a></li>
+                    <li><a href="${pageContext.request.contextPath}/aboutus">About Us</a></li>
                 </ul>
-                
             </div>
-            <div class="icon-cont"><a href="/userprofile"><i class="fa-solid fa-user fa-xl" id="user-icon" style="color: orange;"></i></a></div>
+            <div class="icon-cont"><a href="${pageContext.request.contextPath}/userprofile"><i class="fa-solid fa-user fa-xl" id="user-icon" style="color: orange;"></i></a></div>
             
         </div>
     </div>

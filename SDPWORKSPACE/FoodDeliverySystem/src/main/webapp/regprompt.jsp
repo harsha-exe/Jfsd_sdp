@@ -15,15 +15,15 @@
             <div class="d-flex flex-column justify-content-center">
             <div class="my-card">
                 <span>Create Your Account and Make Your First Order Right now</span>
-                <div><a href="/userreg"><button class="my-button btn btn-primary">Create Account !</button></a></div>
+                <div><a href="${pageContext.request.contextPath}/userreg"><button class="my-button btn btn-primary">Create Account !</button></a></div>
             </div>
             </div>
         </div>
         <div class="right " style="background-color: #6178D6; width: 100%; padding: 2rem;display: flex; justify-content: center; align-items: center;"  >
             <div class="d-flex flex-column justify-content-center">
             <div class="my-card">
-                <span>Join Us In Delevering Our Services To The Customers </span>
-            <div><a href="/deliveryreg"><button class="my-button btn btn-primary">Create Account !</button></a></div>
+                <span>Join Us In Providing Your Services To The Customers </span>
+            <div><a href="${pageContext.request.contextPath}/restsignup"><button class="my-button btn btn-primary">Create Account !</button></a></div>
             </div>
             </div>
         </div>

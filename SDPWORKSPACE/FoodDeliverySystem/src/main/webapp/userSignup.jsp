@@ -22,7 +22,7 @@
         <div class="usignup-left " style="width: 40%;">
         </div>
         <div class="uright" style="width: 60%;">
-            <form action="/addclient" method="post">
+            <form action="${pageContext.request.contextPath}/addclient" method="post">
                 <section class="copy text-center">
                 <h3>Create Your Account</h3>
                 </section>

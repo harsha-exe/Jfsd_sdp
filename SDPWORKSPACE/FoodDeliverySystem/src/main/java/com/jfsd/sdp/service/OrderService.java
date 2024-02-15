@@ -12,4 +12,6 @@ public interface OrderService {
 	public long checkOrderMapping(Items item,Client client);
 	public void deleteOrder(int id);
 	public List<ClientOrderMapping> getClientOrdersById(int id);
+	public long orderCount();
+	public long totalSale();
 }

@@ -31,7 +31,7 @@
             all
             conveniently available within a single app.</p>
           <div>
-          <a href="/login"><button class="button">Explore More !</button></a>
+          <a href="${pageContext.request.contextPath}/login"><button class="button">Explore More !</button></a>
         </div>
       </div>
       

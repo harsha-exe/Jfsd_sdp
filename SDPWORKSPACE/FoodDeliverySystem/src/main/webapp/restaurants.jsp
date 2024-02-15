@@ -80,7 +80,7 @@
 </style>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="/" class="brand">
+		<a href="${pageContext.request.contextPath}/adminhome" class="brand">
 			
 			<span class="text">AdminPannel</span>
 		</a>
@@ -92,7 +92,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="/restaurants">
+				<a href="${pageContext.request.contextPath}/restaurants">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Restaurants</span>
 				</a>
@@ -104,7 +104,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="${pageContext.request.contextPath}/customers">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Customer</span>
 				</a>
@@ -143,19 +143,12 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1>Restaurants</h1>
 				</div>
 				
 			</div>
 
-			<ul class="box-info">
-				<li style="width:45%">
-					<i class='bx bxs-plus-square my-icon' data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-					<span class="text">
-						<h3>New Order</h3>
-					</span>
-				</li>
-			</ul>
+			
 
 
 			
@@ -163,19 +156,19 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Contact</th>
+            <th>Email</th>
             <th>Location</th>
-            <th>GST</th>
+
         </tr>
         <!-- Add your table rows here -->
         <c:forEach items="${rlist}" var="i">
         
         	<tr>
-            <th>${i.getId()}</th>
-            <th>${i.getName()}</th>
-            <th>${i.getContact()}</th>
-            <th>${i.getLocation()}</th>
-            <th>${i.getGst()}</th>
+            <td>${i.getId()}</td>
+            <td>${i.getName()}</td>
+            <td>${i.getEmail()}</td>
+            <td>${i.getLocation()}</td>
+            
         </tr>
         </c:forEach>
         
@@ -196,7 +189,6 @@
       </div>
       <div class="modal-body">
          <form method="post" action="/addrestaurant">
-         e
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">

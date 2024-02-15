@@ -11,6 +11,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/myorders.css"> 
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
 </head>
 <body>
@@ -29,6 +30,9 @@
         </div>
         <div class="bottom-section">
             <h2 style="text-align: center;" class="section-head">Popular Foods</h2>
+           <div style="text-align: right; padding-right: 20px;margin-right: 10px">
+       		<a href="${pageContext.request.contextPath}/availableitems" style="text-decoration: none; color:orange"><span> View More <i class="fa-solid fa-arrow-right"></i></span> </a>
+    </div>
             <div class="popular-food-content">
             <%int idx=0; %>
         	<c:forEach items="${items}" var="item" varStatus="loop">
@@ -36,24 +40,12 @@
                 <div class="my-card">
                     <div class="card-img">
                     
-                        <img src="<%= arr[idx] %>" alt="" style="width: 100%;">
+                        <img src="displayprodimage?id=${item.id}" alt="" style="width: 100%;">
                     </div>
                     <div class="card-info p-1">
                         <h3>${item.name}</h3>
-<!--                          <div class="star-rating" style="margin-top:1rem;margin-bottom: 1rem;">
-                            <input type="radio" id="5-stars-card1" checked="checked" name="rating" value="5" />
-                            <label for="5-stars-card1" class="star">&#9733;</label>
-                            <input type="radio" id="4-stars-card1" name="rating" value="4" />
-                            <label for="4-stars-card1" class="star">&#9733;</label>
-                            <input type="radio" id="3-stars-card1" name="rating" value="3" />
-                            <label for="3-stars-card1" class="star">&#9733;</label>
-                            <input type="radio" id="2-stars-card1" name="rating" value="2" />
-                            <label for="2-stars-card1" class="star">&#9733;</label>
-                            <input type="radio" id="1-star-card1" name="rating" value="1" />
-                            <label for="1-star-card1" class="star">&#9733;</label>
-                        </div> -->
-                        <h6><span style="color: red;">${item.rating}</span>/5</h6>
-                        <button  onclick="placeOrder(<%= idx+1%>)">Order Now</button>
+                        <h6><i class='bx bx-rupee'></i>  <span style="color: red;">${item.price}</span></h6>
+                        <button  onclick="placeOrder('${item.id}')">Order Now</button>
                 		<%idx++; %>
                     </div>
                 </div>
@@ -65,7 +57,7 @@
 				    function placeOrder(id) {
 				        $.ajax({
 				            type: "POST",
-				            url: "/placeorder/" + id,
+				            url: "${pageContext.request.contextPath}/placeorder/" + id,
 				            success: function(data) {
 				                alert("Order placed successfully!");
 				                // Optionally, you can update the page with the response data
@@ -186,6 +178,7 @@
             </div>
         </div>
     </div>
+     <script src="https://kit.fontawesome.com/e1b6c77699.js" crossorigin="anonymous"></script>
 <%@include file="footer.jsp" %>
 </body>
 </html>

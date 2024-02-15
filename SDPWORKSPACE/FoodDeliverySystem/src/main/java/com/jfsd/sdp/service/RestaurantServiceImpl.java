@@ -30,4 +30,10 @@ public class RestaurantServiceImpl implements RestaurantsService {
 		return restaurantsRepository.count();
 	}
 
+	@Override
+	public Restaurants restaurantLogin(String email,String password) {
+		Restaurants r=restaurantsRepository.checkRestaurantLogin(email,password);
+		return r;
+	}
+
 }

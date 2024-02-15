@@ -35,18 +35,6 @@ public class OrderServiceImpl implements OrderService {
 		
 	}
 
-	
-//	@Override
-//	  public void deleteOrder(int id) {
-//	    Optional<ClientOrderMapping> obj=clientOrderMappingRepository.findById(id);
-//	    ClientOrderMapping o=null;
-//	    if(obj.isPresent())
-//	    {
-//	      o=obj.get();
-//	    }
-//	    clientOrderMappingRepository.delete(o);
-//	  }
-
 	@Override
 	@Transactional
 	public void deleteOrder(int mappingId) {
@@ -58,5 +46,15 @@ public class OrderServiceImpl implements OrderService {
 	        clientOrderMappingRepository.save(clientOrderMapping); // Update the mapping
 	        clientOrderMappingRepository.delete(clientOrderMapping); // Delete the mapping
 	    }
+	}
+
+	@Override
+	public long orderCount() {
+		return clientOrderMappingRepository.count();
+	}
+
+	@Override
+	public long totalSale() {
+		return clientOrderMappingRepository.totalSale();
 	}
 }

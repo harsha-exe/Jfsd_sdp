@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<%@page import="com.jfsd.sdp.model.Client"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -73,7 +72,7 @@
                     </div>
                 
                 </div>
-                <div class="text-center"><button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Update Profile</button></div>
+                
            
                 </div>
             </form>
@@ -114,7 +113,7 @@
             <input type="text" placeholder="" name="mobile" value="${client.getMobile()}" class="form-control" required>
             <label for=""><i class="fa-regular fa-address-card"></i>&nbsp;Phone Number</label>
         </div>
-       <button class="btn glow-on-hover mt-4" type="submit">Update</button>
+       <button class="btn glow-on-hover mt-4 disabled" type="submit">Update</button>
     </form>
       </div>
     </div>
